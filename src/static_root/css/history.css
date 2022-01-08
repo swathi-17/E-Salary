@@ -1,0 +1,21 @@
+
+.nav-link#viewlnk{
+    color:rgba(0, 0, 0, 0.50);
+}
+
+.nav-link#historylnk{
+    color:black;
+}
+
+.card{
+    margin-top: 20px;
+}
+
+.card-text{
+    margin-bottom: 1rem;
+}
+
+.card-text p{
+    color:black !important;
+    margin-bottom: 2px!important;
+}

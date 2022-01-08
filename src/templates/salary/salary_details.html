@@ -1,0 +1,199 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+
+
+  <!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+  <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <title>Employee salary details</title>
+  </head>
+  <body>
+{% include 'salary/navbar.html' %}
+
+    <div class="hero" style="background-image: url('../static/images/salary.jpg');"></div>
+  <hr class="hr1">
+    <div class="limiter">
+      <div class="container">
+      <div class="heading"> Employee details </div>
+      {% comment %} {% for list in salary_list %} {% endcomment %}
+       <div class="empid">
+         {% for emp in emp_details %}
+         <div class="row">
+          <span class="col-lg-4 col-xs-6">Employee ID</span>
+          <span class="col-lg-6 col-xs-6">{{ emp.username }}</span>
+        </div>
+         <div class="row">
+          <span class="col-lg-4">Name</span>
+          <span class="col-lg-4"> {{ emp.first_name }} {{ emp.last_name }}</span>
+         </div>
+         <div class="row">
+          <span class="col-lg-4">Email</span>
+          <span class="col-lg-4"> {{ emp.email }}</span>
+         </div>
+         <div class="row">
+          <span class="col-lg-4">Address</span>
+          <span class="col-lg-4"> {{ emp_details_2.address }}</span>
+         </div>
+         <div class="row">
+          <span class="col-lg-4">Phone no</span>
+          <span class="col-lg-4"> {{ emp_details_2.phoneno }}</span>
+         </div>
+         {% endfor %}
+         <!-- <div class="row">
+          <span class="col-lg-4">Department </span>
+          <span class="col-lg-4">{{ list.dno }}</span>
+        </div> -->
+        <div class="row">
+          <span class="col-lg-4">Slip No </span>
+          <span class="col-lg-4">{{ list.slipno }}</span>
+        </div>
+       </div>
+       <div class="heading"> Salary details </div>
+        <div class="wrap-table100">
+          <div class="table100">
+            <table>
+              <thead>
+                <tr class="table100-head">
+                  <th class="column1">Description</th>
+                  <th class="column2">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td class="column1">Basic Salary</td>
+                    <td class="column2">{{ list.basic_salary }}</td>
+                  </tr>
+                  <tr>
+                    <td class="column1">HRA</td>
+                    <td class="column2">{{ list.hra }}</td>
+                  </tr>
+                  <tr>
+                    <td class="column1">Conveyance Allowance</td>
+                    <td class="column2">{{ list.conveyance_allowance }}</td>
+                  </tr>
+                  <tr>
+                    <td class="column1">Medical allowance</td>
+                    <td class="column2">{{ list.medical_allowance }}</td>
+                  </tr>
+                  <tr>
+                    <td class="column1">Performance bonus</td>
+                    <td class="column2">{{ list.performance_bonus }}</td>
+                  </tr>
+                  <tr>
+                    <td class="column1">Others</td>
+                    <td class="column2">{{ list.others }}</td>
+                  </tr>
+                  <tr>
+                    <td class="column1">Date</td>
+                    <td class="column2">{{ list.sdate }}</td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="total">
+          <span class="c1">Gross Salary : {{ total_salary }}</span>
+        </div>
+        {% comment %} {% endfor %} {% endcomment %}
+        <br>
+        <hr class="hr2">
+        <br>
+        <div class="heading">Deduction details </div>
+        {% for list in ded_list %}
+        <div class="wrap-table100">
+          <div class="table100">
+            <table>
+              <thead>
+                <tr class="table100-head">
+                  <th class="column1">Type</th>
+                  <th class="column2">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td class="column1">Deduction ID</td>
+                    <td class="column2">{{ list.dedid }}</td>
+                  </tr>
+                  <tr>
+                    <td class="column1">Deduction category</td>
+
+                    {% comment %} Not required as category is a char field now{% endcomment %}
+
+                    {% comment %} {% if list.dcategory == 'L' %}
+                    <td class="column2">Loans</td>
+                    {% else %}
+                    <td class="column2">Pension</td>
+                    {% endif %} {% endcomment %}
+
+                    <td class="column2">{{list.dcategory}}</td>
+                  </tr>
+                  <tr>
+                    <td class="column1">Deduction amount</td>
+                    <td class="column2">{{ list.damt }}</td>
+                  </tr>
+                  {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="container totalc">
+        <div class="total">
+          <span class="c2">Total Deductions : {{ total_ded }}</span>
+          <span class="c3">Net Salary : {{ net_salary }}</span>
+        </div>
+      </div>
+    </div>
+<br>
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/main3.js' %}"></script>
+
+
+    
+  <!--===============================================================================================-->	
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+  <!--===============================================================================================-->
+    <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <!--===============================================================================================-->
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+  <!--===============================================================================================-->
+    <script>
+      (function ($) {
+          "use strict";
+      })(jQuery);
+    </script>
+  </body>
+
+</html>
+

@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" style="text-transform: uppercase; font-weight: bolder; color: blue;" href="#">E-SALARY</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto" style="margin-right: 20px;">
+      <li class="nav-item">
+        <a class="nav-link" id="homelnk" href="{% url 'details' %}">Home </a>
+      </li>
+      {% if accountant %}
+      <li class="nav-item">
+        <a class="nav-link" id="viewlnk" href="{% url 'accountants' %}">View</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="historylnk" href="{% url 'history' %}">History</a>
+      </li>
+      {% endif %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'signout' %}">Signout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
